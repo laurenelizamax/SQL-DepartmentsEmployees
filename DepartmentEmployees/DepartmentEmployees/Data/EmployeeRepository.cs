@@ -134,7 +134,7 @@ namespace DepartmentsEmployees.Data
                     {
                         // These SQL parameters are annoying. Why can't we use string interpolation?
                         // ... sql injection attacks!!!
-                        cmd.CommandText = "INSERT INTO Employee (FirstName), (LastName), (DepartmentId) OUTPUT INSERTED.Id Values (@FirstName), (@LastName), (@DepartmentId)";
+                        cmd.CommandText = "INSERT INTO Employee (FirstName, LastName, DepartmentId) OUTPUT INSERTED.Id Values (@FirstName, @LastName, @DepartmentId)";
                         cmd.Parameters.Add(new SqlParameter("@FirstName", employee.FirstName));
                         cmd.Parameters.Add(new SqlParameter("@LastName", employee.LastName));
                         cmd.Parameters.Add(new SqlParameter("@DepartmentId", employee.DepartmentId));
@@ -161,8 +161,8 @@ namespace DepartmentsEmployees.Data
                 {
                     cmd.CommandText = @"UPDATE Employee
                                      SET FirstName = @firstName,
-                                     SET LastName = @lastName,
-                                     SET DepartmentId = @departmentId
+                                     LastName = @lastName,
+                                     DepartmentId = @departmentId
                                      WHERE Id = @id";
                     cmd.Parameters.Add(new SqlParameter("@firstName", employee.FirstName));
                     cmd.Parameters.Add(new SqlParameter("@lastName", employee.LastName));

@@ -6,6 +6,8 @@ namespace DepartmentsEmployees
 {
     class Program
     {
+        private static string lastName;
+
         static void Main(string[] args)
         {
             //// Get All Departments
@@ -44,8 +46,9 @@ namespace DepartmentsEmployees
 
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+         
+
+            Console.WriteLine("-----------------");
 
             //// Add a new Department
             //var legal = new Department();
@@ -65,17 +68,36 @@ namespace DepartmentsEmployees
             //var departmentDelete = Int32.Parse(Console.ReadLine());
             //departmentRepo.DeleteDepartment(departmentDelete);
 
-            // Add a new Employee
-            var nameIt = new Employee()
-            {
-                FirstName = firstname,
-                LastName = lastName,
-                DepartmentId = departmentId
-            };
-            Console.WriteLine("What Employee do you like to add?");
-            nameIt.Console.ReadLine();
+            //// Add a new Employee
+            //var newEmployee = new Employee();
+            //Console.WriteLine("What is your Employee's first name?");
+            //newEmployee.FirstName = Console.ReadLine();
+            //Console.WriteLine("What is your Employee's last name?");
+            //newEmployee.LastName = Console.ReadLine();
+            //Console.WriteLine("What department does your Employee work in?");
+            //newEmployee.DepartmentId = Int32.Parse(Console.ReadLine());
+
+            //employeeRepo.AddEmployee(newEmployee);
 
 
+            ////// Update an Employee
+            //Console.WriteLine("What is the ID of the Employee would you like to update?");
+            //var employeeToUpdate = Int32.Parse(Console.ReadLine());
+          
+            //var updateEmployee = new Employee();
+            //Console.WriteLine("What is the employee's new first name?");
+            //updateEmployee.FirstName = Console.ReadLine();
+            //Console.WriteLine("What is the employee's new first name?");
+            //updateEmployee.LastName = Console.ReadLine();
+            //Console.WriteLine("What is the new department (ID) of your employee?");
+            //updateEmployee.DepartmentId = Int32.Parse(Console.ReadLine());
+
+            //employeeRepo.UpdateEmployee(employeeToUpdate, updateEmployee);
+
+            //// Delete a Department
+            Console.WriteLine("What Employee (ID) would you like to delete?");
+            var employeeDelete = Int32.Parse(Console.ReadLine());
+            employeeRepo.DeleteEmployee(employeeDelete);
 
         }
     }
