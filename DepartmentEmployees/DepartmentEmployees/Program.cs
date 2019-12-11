@@ -35,7 +35,7 @@ namespace DepartmentsEmployees
             Console.WriteLine("---------------");
             foreach (var employee in allEmployees)
             {
-                Console.WriteLine(employee.FirstName, employee.LastName);
+                Console.WriteLine($"{employee.FirstName} {employee.LastName} {employee.DeptName}");
             }
 
             // Get Employee by Id

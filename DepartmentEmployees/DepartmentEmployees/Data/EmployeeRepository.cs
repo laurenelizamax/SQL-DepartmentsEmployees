@@ -42,7 +42,9 @@ namespace DepartmentsEmployees.Data
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     // Here we setup the command with the SQL we want to execute before we execute it.
-                    cmd.CommandText = "SELECT Id, FirstName, LastName, DepartmentId FROM Employee";
+                    cmd.CommandText = @"SELECT e.Id, e.FirstName, e.LastName, d.DeptName, e.DepartmentId
+                             FROM Employee e
+                             LEFT JOIN Department d ON e.DepartmentId = d.Id";
 
                     // Execute the SQL in the database and get a "reader" that will give us access to the data.
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -66,15 +68,23 @@ namespace DepartmentsEmployees.Data
                         int lastName = reader.GetOrdinal("LastName");
                         string lastNameValue = reader.GetString(lastName);
 
-                        // Now let's create a new department object using the data from the database.
+                        int departId = reader.GetOrdinal("DepartmentId");
+                        int deptIdValue = reader.GetInt32(departId);
+
+                        int deptName = reader.GetOrdinal("DeptName");
+                        string deptNameValue = reader.GetString(deptName);
+
+                        // Now let's create a new employee object using the data from the database.
                         Employee employee = new Employee
                         {
                             Id = idValue,
                             FirstName = firstNameValue,
                             LastName = lastNameValue,
+                            DepartmentId = deptIdValue,
+                            DeptName = deptNameValue
                         };
 
-                        // ...and add that department object to our list.
+                        // ...and add that employee object to our list.
                         employees.Add(employee);
                     }
 
